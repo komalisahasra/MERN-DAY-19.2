@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <style>
+    body {
+      background-color: #a5d6a7;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .weather-container {
+      background-color: #c8e6c9;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      width: 600px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .temp {
+      font-size: 4rem;
+      font-weight: 600;
+    }
+
+    .city {
+      font-size: 1.8rem;
+      margin-top: 10px;
+    }
+
+    .time {
+      font-size: 1.4rem;
+      color: #333;
+    }
+
+    .weather {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .search {
+      margin-top: 30px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      border-radius: 20px;
+      border: none;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 20px;
+      margin-left: 10px;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="weather-container">
+  <h1>Weather App</h1>
+  <div class="temp" id="temp">20</div>
+  <div class="city" id="city">Bhopal</div>
+  <div class="time" id="time">12:15 Monday</div>
+  <div class="weather" id="weather">mist</div>
+
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Enter city..." />
+    <button onclick="searchCity()">Search Button</button>
+  </div>
+</div>
+
+<script>
+  function searchCity() {
+    const city = document.getElementById('searchInput').value;
+    if (city.trim() === '') return;
+
+    // Just a dummy UI update (replace with actual weather API if needed)
+    document.getElementById('city').innerText = city;
+    document.getElementById('temp').innerText = Math.floor(Math.random() * 15) + 20;
+    document.getElementById('weather').innerText = "clear sky";
+
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    document.getElementById('time').innerText = `${hours}:${minutes} ${days[now.getDay()]}`;
+  }
+</script>
+
+</body>
+</html>
